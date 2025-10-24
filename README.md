@@ -106,7 +106,7 @@ npm run dev
 
 Once both servers are running, open your browser at:
 
-👉 **http://localhost:5173**
+ **http://localhost:5173**
 
 You can now register a new account and upload invoices!
 
@@ -201,7 +201,7 @@ All invoice routes are protected (require JWT token).
    https://my-invoice-api.onrender.com
    ```
 
-### 🔹 Frontend (Vercel)
+### Frontend (Vercel)
 
 1. Push your frontend folder to GitHub  
 2. Import the repo on Vercel  
@@ -226,4 +226,5 @@ This ensures CORS works correctly.
 
 ---
  
+
 
