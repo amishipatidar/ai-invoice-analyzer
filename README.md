@@ -1,5 +1,3 @@
-﻿# ai-invoice-analyzer
-
 # AI Invoice Analyzer
 
 AI Invoice Analyzer is a full-stack **MERN (MongoDB, Express, React, Node.js)** application that intelligently processes PDF invoices.  
@@ -228,3 +226,4 @@ This ensures CORS works correctly.
 
 ---
  
+
