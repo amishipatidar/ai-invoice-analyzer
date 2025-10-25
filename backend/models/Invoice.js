@@ -61,3 +61,5 @@ const invoiceSchema = new mongoose.Schema({
 });
 
 export default mongoose.model('Invoice', invoiceSchema);
+
+
