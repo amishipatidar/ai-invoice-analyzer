@@ -74,7 +74,7 @@ const FileUpload = ({ onUploadSuccess }) => {
 
   return (
     <div className="card">
-      <h2 className="text-2xl font-bold mb-4">Upload Invoice</h2>
+      {/* <h2 className="text-2xl font-bold mb-4">Upload Invoice</h2> */}
 
       <div
         className={`relative border-2 border-dashed rounded-lg p-8 text-center transition-colors duration-200 ${

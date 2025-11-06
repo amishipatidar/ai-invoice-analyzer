@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ---------- Base Styles ---------- */
 @layer base {
   * {
     @apply border-gray-200 dark:border-gray-700;
@@ -10,8 +11,48 @@
   body {
     @apply bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-200;
   }
+
+  /* Dropdown base styling */
+  select {
+    @apply appearance-none px-3 py-2 rounded-md border text-sm font-medium cursor-pointer
+           bg-white text-gray-800 border-gray-300
+           dark:bg-gray-800 dark:text-gray-100 dark:border-gray-700
+           transition-colors duration-200;
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='12' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 4l4 4 4-4' stroke='%236b7280' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 12px;
+  }
+
+  /* Dark mode arrow color */
+  [data-theme='dark'] select {
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='12' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 4l4 4 4-4' stroke='%23d1d5db' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  }
+
+  select:hover {
+    @apply border-gray-400 dark:border-gray-500;
+  }
+
+  select:focus {
+    @apply outline-none ring-2 ring-blue-500 dark:ring-blue-400;
+  }
 }
 
+/* ---------- Component Styles ---------- */
 @layer components {
-  .btn-primary { /* ...all your other .btn-secondary, .input-field, .card styles... */ }
+  .btn-primary {
+    @apply bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-200;
+  }
+
+  .btn-secondary {
+    @apply bg-gray-200 hover:bg-gray-300 text-gray-800 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-100 py-2 px-4 rounded-lg transition-colors duration-200;
+  }
+
+  .input-field {
+    @apply border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500;
+  }
+
+  .card {
+    @apply bg-white dark:bg-gray-800 rounded-2xl shadow-md p-6 border border-gray-200 dark:border-gray-700 transition-colors duration-200;
+  }
 }
