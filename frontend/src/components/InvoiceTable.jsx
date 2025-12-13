@@ -1,4 +1,4 @@
-import { Trash2, Eye } from 'lucide-react';
+import { Trash2, Eye, FileText } from 'lucide-react';
 import axios from 'axios';
 
 const InvoiceTable = ({ invoices, onDelete, onView }) => {
@@ -32,8 +32,14 @@ const InvoiceTable = ({ invoices, onDelete, onView }) => {
 
   if (invoices.length === 0) {
     return (
-      <div className="card text-center py-12">
-        <p className="text-gray-500 dark:text-gray-400">No invoices yet. Upload your first invoice!</p>
+      <div className="card py-16 flex flex-col items-center justify-center text-center">
+        <div className="bg-gray-100 dark:bg-gray-700 p-4 rounded-full mb-4">
+          <FileText className="w-8 h-8 text-gray-400 dark:text-gray-500" />
+        </div>
+        <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-1">No invoices yet</h3>
+        <p className="text-gray-500 dark:text-gray-400 max-w-sm mx-auto">
+          Upload your first invoice to see the magic happen. We'll extract all the details for you.
+        </p>
       </div>
     );
   }

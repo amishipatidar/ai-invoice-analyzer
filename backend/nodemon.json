@@ -1,0 +1,9 @@
+{
+    "ignore": [
+        "uploads/*",
+        "test_invoice_generated.pdf",
+        "*.log",
+        "debug-*.cjs",
+        "generate-*.cjs"
+    ]
+}

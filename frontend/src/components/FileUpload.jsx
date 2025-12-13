@@ -59,7 +59,7 @@ const FileUpload = ({ onUploadSuccess }) => {
 
     } catch (error) {
       console.error('Upload error:', error);
-      alert(error.response?.data?.message || 'Failed to upload invoice');
+      alert(error.response?.data?.message || error.message || 'Failed to upload invoice');
     } finally {
       setUploading(false);
     }
@@ -77,11 +77,10 @@ const FileUpload = ({ onUploadSuccess }) => {
       {/* <h2 className="text-2xl font-bold mb-4">Upload Invoice</h2> */}
 
       <div
-        className={`relative border-2 border-dashed rounded-lg p-8 text-center transition-colors duration-200 ${
-          dragActive
+        className={`relative border-2 border-dashed rounded-lg p-8 text-center transition-colors duration-200 ${dragActive
             ? 'border-blue-600 bg-blue-50 dark:bg-blue-900/20'
             : 'border-gray-300 dark:border-gray-600'
-        }`}
+          }`}
         onDragEnter={handleDrag}
         onDragLeave={handleDrag}
         onDragOver={handleDrag}
