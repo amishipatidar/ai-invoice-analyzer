@@ -73,13 +73,11 @@ const FileUpload = ({ onUploadSuccess }) => {
   };
 
   return (
-    <div className="card">
-      {/* <h2 className="text-2xl font-bold mb-4">Upload Invoice</h2> */}
-
+    <div className="w-full">
       <div
-        className={`relative border-2 border-dashed rounded-lg p-8 text-center transition-colors duration-200 ${dragActive
-            ? 'border-blue-600 bg-blue-50 dark:bg-blue-900/20'
-            : 'border-gray-300 dark:border-gray-600'
+        className={`relative border-4 border-solid rounded-none p-10 text-center transition-all duration-200 ${dragActive
+          ? 'border-alphonse-blue bg-blue-50 dark:bg-blue-900/20'
+          : 'border-gray-400 dark:border-gray-600 hover:border-alphonse-charcoal dark:hover:border-alphonse-cream'
           }`}
         onDragEnter={handleDrag}
         onDragLeave={handleDrag}
@@ -96,26 +94,30 @@ const FileUpload = ({ onUploadSuccess }) => {
         />
 
         {!selectedFile ? (
-          <label htmlFor="file-upload" className="cursor-pointer">
-            <Upload className="w-12 h-12 mx-auto mb-4 text-gray-400" />
-            <p className="text-lg mb-2">
-              Drag and drop your PDF invoice here, or{' '}
-              <span className="text-blue-600 hover:text-blue-700">browse</span>
+          <label htmlFor="file-upload" className="cursor-pointer flex flex-col items-center">
+            <div className="mb-4 p-4 bg-alphonse-yellow border-2 border-black shadow-neo rounded-none">
+              <Upload className="w-8 h-8 text-alphonse-charcoal" />
+            </div>
+            <p className="text-xl font-heading font-bold text-alphonse-charcoal dark:text-alphonse-cream mb-2 uppercase tracking-wide">
+              Upload Invoice
             </p>
-            <p className="text-sm text-gray-500">PDF files only, max 10MB</p>
+            <p className="text-gray-600 dark:text-gray-400 font-medium">
+              Drag & drop PDF or <span className="text-alphonse-blue dark:text-alphonse-yellow underline decoration-2 underline-offset-2">browse</span>
+            </p>
+            <p className="text-xs text-gray-500 mt-4 font-mono uppercase">Max Size: 10MB</p>
           </label>
         ) : (
-          <div className="flex items-center justify-center space-x-4">
-            <File className="w-8 h-8 text-blue-600" />
+          <div className="flex items-center justify-center space-x-4 bg-white dark:bg-alphonse-surface p-4 border-2 border-black shadow-neo">
+            <File className="w-8 h-8 text-alphonse-blue" />
             <div className="flex-1 text-left">
-              <p className="font-medium">{selectedFile.name}</p>
-              <p className="text-sm text-gray-500">
+              <p className="font-heading font-bold text-alphonse-charcoal dark:text-alphonse-cream">{selectedFile.name}</p>
+              <p className="text-sm font-mono text-gray-500">
                 {(selectedFile.size / 1024 / 1024).toFixed(2)} MB
               </p>
             </div>
             <button
               onClick={clearFile}
-              className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full"
+              className="p-2 hover:bg-alphonse-red hover:text-white border-2 border-transparent hover:border-black transition-all"
             >
               <X className="w-5 h-5" />
             </button>
@@ -127,9 +129,19 @@ const FileUpload = ({ onUploadSuccess }) => {
         <button
           onClick={handleUpload}
           disabled={uploading}
-          className="btn-primary w-full mt-4"
+          className="neo-btn-primary w-full mt-6 py-4 text-lg flex items-center justify-center gap-2"
         >
-          {uploading ? 'Processing...' : 'Upload and Process'}
+          {uploading ? (
+            <>
+              <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+              <span>Processing...</span>
+            </>
+          ) : (
+            <>
+              <span>Start Processing</span>
+              <Upload className="w-5 h-5" />
+            </>
+          )}
         </button>
       )}
     </div>

@@ -2,57 +2,87 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ---------- Base Styles ---------- */
 @layer base {
-  * {
-    @apply border-gray-200 dark:border-gray-700;
-  }
-
   body {
-    @apply bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-200;
+    @apply font-sans antialiased;
+    background-color: theme('colors.alphonse.cream');
+    color: theme('colors.alphonse.charcoal');
   }
 
-  /* Dropdown base styling */
-  select {
-    @apply appearance-none px-3 py-2 rounded-md border text-sm font-medium cursor-pointer
-           bg-white text-gray-800 border-gray-300
-           dark:bg-gray-800 dark:text-gray-100 dark:border-gray-700
-           transition-colors duration-200;
-    background-image: url("data:image/svg+xml,%3Csvg width='12' height='12' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 4l4 4 4-4' stroke='%236b7280' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 0.75rem center;
-    background-size: 12px;
+  .dark body {
+    background-color: theme('colors.alphonse.charcoal');
+    color: theme('colors.alphonse.cream');
   }
 
-  /* Dark mode arrow color */
-  [data-theme='dark'] select {
-    background-image: url("data:image/svg+xml,%3Csvg width='12' height='12' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 4l4 4 4-4' stroke='%23d1d5db' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-  }
-
-  select:hover {
-    @apply border-gray-400 dark:border-gray-500;
-  }
-
-  select:focus {
-    @apply outline-none ring-2 ring-blue-500 dark:ring-blue-400;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: theme('fontFamily.heading');
+    font-weight: 700;
   }
 }
 
-/* ---------- Component Styles ---------- */
 @layer components {
-  .btn-primary {
-    @apply bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-200;
+  .neo-card {
+    @apply border-2 border-black shadow-neo p-6;
+    background-color: theme('colors.alphonse.surface');
   }
 
-  .btn-secondary {
-    @apply bg-gray-200 hover:bg-gray-300 text-gray-800 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-100 py-2 px-4 rounded-lg transition-colors duration-200;
+  /* Robust Dark Mode Overrides with !important */
+  .dark .neo-card {
+    border-color: #E5E1D4 !important;
+    box-shadow: 4px 4px 0px 0px #E5E1D4 !important;
   }
 
-  .input-field {
-    @apply border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500;
+  .neo-input {
+    @apply w-full border-2 border-gray-600 px-4 py-3 focus:outline-none transition-colors placeholder-gray-500;
+    background-color: theme('colors.alphonse.charcoal');
+    color: theme('colors.alphonse.cream');
   }
 
-  .card {
-    @apply bg-white dark:bg-gray-800 rounded-2xl shadow-md p-6 border border-gray-200 dark:border-gray-700 transition-colors duration-200;
+  .dark .neo-input {
+    border-color: #E5E1D4 !important;
+    color: #E5E1D4 !important;
+  }
+
+  .neo-input:focus {
+    border-color: theme('colors.alphonse.yellow');
+  }
+
+  .neo-btn {
+    font-family: theme('fontFamily.heading');
+    @apply font-bold uppercase tracking-wider border-2 border-black shadow-neo active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all duration-100;
+  }
+
+  .dark .neo-btn {
+    border-color: #E5E1D4 !important;
+    box-shadow: 4px 4px 0px 0px #E5E1D4 !important;
+  }
+
+  .neo-btn-primary {
+    @apply neo-btn text-white;
+    background-color: theme('colors.alphonse.blue');
+  }
+
+  .neo-btn-primary:hover {
+    background-color: #4040b0;
+  }
+
+  .neo-btn-secondary {
+    @apply neo-btn hover:bg-white;
+    background-color: theme('colors.alphonse.cream');
+    color: theme('colors.alphonse.charcoal');
+  }
+
+  .neo-btn-accent {
+    @apply neo-btn text-white;
+    background-color: theme('colors.alphonse.red');
+  }
+
+  .neo-btn-accent:hover {
+    background-color: #b03a4d;
   }
 }

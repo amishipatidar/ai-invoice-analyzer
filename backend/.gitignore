@@ -4,3 +4,12 @@ uploads/*
 !uploads/.gitkeep
 *.log
 .DS_Store
+
+# Generated Files
+*.pdf
+
+# Debug & Utility Scripts
+debug-*.js
+fix-*.js
+test-*.js
+update-env-key.js

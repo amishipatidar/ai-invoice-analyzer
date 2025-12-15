@@ -28,10 +28,12 @@ const limiter = rateLimit({
 });
 app.use('/api/', limiter);
 
-// CORS configuration - Allow ALL origins for development to prevent blocking
+// CORS configuration - Explicitly allow frontend origin
 app.use(cors({
-  origin: true, 
-  credentials: true
+  origin: ['http://localhost:5173', 'http://localhost:3000'],
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
 // Body parser

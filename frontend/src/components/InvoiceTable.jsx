@@ -1,89 +1,77 @@
-import { Trash2, Eye, FileText } from 'lucide-react';
-import axios from 'axios';
+import { Eye, Trash2, FileText } from 'lucide-react';
 
 const InvoiceTable = ({ invoices, onDelete, onView }) => {
-  const handleDelete = async (id) => {
-    if (!confirm('Are you sure you want to delete this invoice?')) return;
-
-    try {
-      await axios.delete(`/invoices/${id}`);
-      onDelete(id);
-      alert('Invoice deleted successfully');
-    } catch (error) {
-      console.error('Delete error:', error);
-      alert('Failed to delete invoice');
-    }
-  };
-
   const getStatusBadge = (status) => {
     const styles = {
-      pending: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400',
-      processing: 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400',
-      completed: 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400',
-      failed: 'bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400',
+      pending: 'bg-alphonse-yellow text-alphonse-charcoal border-2 border-black',
+      processing: 'bg-alphonse-blue text-white border-2 border-black',
+      completed: 'bg-green-500 text-white border-2 border-black',
+      failed: 'bg-alphonse-red text-white border-2 border-black',
     };
 
     return (
-      <span className={`px-2 py-1 rounded-full text-xs font-medium ${styles[status]}`}>
-        {status.charAt(0).toUpperCase() + status.slice(1)}
+      <span className={`px-3 py-1 text-xs font-bold uppercase tracking-wider shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] ${styles[status]}`}>
+        {status}
       </span>
     );
   };
 
   if (invoices.length === 0) {
     return (
-      <div className="card py-16 flex flex-col items-center justify-center text-center">
-        <div className="bg-gray-100 dark:bg-gray-700 p-4 rounded-full mb-4">
+      <div className="neo-card py-16 flex flex-col items-center justify-center text-center bg-white dark:bg-alphonse-charcoal">
+        <div className="p-4 bg-gray-100 dark:bg-gray-800 border-2 border-black shadow-neo mb-4">
           <FileText className="w-8 h-8 text-gray-400 dark:text-gray-500" />
         </div>
-        <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-1">No invoices yet</h3>
-        <p className="text-gray-500 dark:text-gray-400 max-w-sm mx-auto">
-          Upload your first invoice to see the magic happen. We'll extract all the details for you.
+        <h3 className="text-xl font-heading font-bold text-alphonse-charcoal dark:text-alphonse-cream mb-1">No invoices yet</h3>
+        <p className="text-gray-600 dark:text-gray-400 max-w-sm mx-auto font-sans">
+          Upload your first invoice to see the magic happen.
         </p>
       </div>
     );
   }
 
   return (
-    <div className="card overflow-x-auto">
+    <div className="neo-card overflow-x-auto bg-white dark:bg-alphonse-charcoal p-0">
       <table className="w-full">
         <thead>
-          <tr className="border-b border-gray-200 dark:border-gray-700">
-            <th className="text-left py-3 px-4">File Name</th>
-            <th className="text-left py-3 px-4">Type</th>
-            <th className="text-left py-3 px-4">Status</th>
-            <th className="text-left py-3 px-4">Total</th>
-            <th className="text-left py-3 px-4">Date</th>
-            <th className="text-right py-3 px-4">Actions</th>
+          <tr className="border-b-2 border-black bg-gray-100 dark:bg-gray-800">
+            <th className="text-left py-4 px-6 font-heading font-bold uppercase tracking-wider text-sm text-alphonse-charcoal dark:text-alphonse-cream">File Name</th>
+            <th className="text-left py-4 px-6 font-heading font-bold uppercase tracking-wider text-sm text-alphonse-charcoal dark:text-alphonse-cream">Type</th>
+            <th className="text-left py-4 px-6 font-heading font-bold uppercase tracking-wider text-sm text-alphonse-charcoal dark:text-alphonse-cream">Status</th>
+            <th className="text-left py-4 px-6 font-heading font-bold uppercase tracking-wider text-sm text-alphonse-charcoal dark:text-alphonse-cream">Total</th>
+            <th className="text-left py-4 px-6 font-heading font-bold uppercase tracking-wider text-sm text-alphonse-charcoal dark:text-alphonse-cream">Date</th>
+            <th className="text-right py-4 px-6 font-heading font-bold uppercase tracking-wider text-sm text-alphonse-charcoal dark:text-alphonse-cream">Actions</th>
           </tr>
         </thead>
         <tbody>
           {invoices.map((invoice) => (
-            <tr key={invoice._id} className="border-b border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700/50">
-              <td className="py-3 px-4">{invoice.fileName}</td>
-              <td className="py-3 px-4 capitalize">{invoice.invoiceType}</td>
-              <td className="py-3 px-4">{getStatusBadge(invoice.processingStatus)}</td>
-              <td className="py-3 px-4">
+            <tr key={invoice._id} className="border-b-2 border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+              <td className="py-4 px-6 font-bold text-alphonse-charcoal dark:text-alphonse-cream">{invoice.fileName}</td>
+              <td className="py-4 px-6 capitalize font-medium text-gray-600 dark:text-gray-300">{invoice.invoiceType}</td>
+              <td className="py-4 px-6">{getStatusBadge(invoice.processingStatus)}</td>
+              <td className="py-4 px-6 font-mono font-bold text-alphonse-charcoal dark:text-alphonse-cream">
                 {invoice.extractedData?.total
                   ? `${invoice.extractedData.currency || '$'} ${invoice.extractedData.total.toFixed(2)}`
                   : '-'}
               </td>
-              <td className="py-3 px-4">
+              <td className="py-4 px-6 text-gray-600 dark:text-gray-400 font-medium">
                 {new Date(invoice.createdAt).toLocaleDateString()}
               </td>
-              <td className="py-3 px-4">
+              <td className="py-4 px-6">
                 <div className="flex justify-end space-x-2">
                   {invoice.processingStatus === 'completed' && (
                     <button
                       onClick={() => onView(invoice)}
-                      className="p-2 text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded"
+                      className="p-2 bg-alphonse-blue text-white border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-none transition-all active:bg-blue-700"
+                      title="View Details"
                     >
                       <Eye className="w-4 h-4" />
                     </button>
                   )}
                   <button
-                    onClick={() => handleDelete(invoice._id)}
-                    className="p-2 text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 rounded"
+                    onClick={() => onDelete(invoice._id)}
+                    className="p-2 bg-alphonse-red text-white border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-none transition-all active:bg-red-700"
+                    title="Delete Invoice"
                   >
                     <Trash2 className="w-4 h-4" />
                   </button>
