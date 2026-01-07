@@ -1,12 +1,21 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import InvoiceTable from '../components/InvoiceTable';
+import NeoDropdown from '../components/NeoDropdown';
 
 const History = () => {
   const [invoices, setInvoices] = useState([]);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState('all');
   const [selectedInvoice, setSelectedInvoice] = useState(null);
+
+  const statusOptions = [
+    { value: 'all', label: 'All Status' },
+    { value: 'completed', label: 'Completed' },
+    { value: 'processing', label: 'Processing' },
+    { value: 'pending', label: 'Pending' },
+    { value: 'failed', label: 'Failed' },
+  ];
 
   useEffect(() => {
     fetchInvoices();
@@ -61,18 +70,12 @@ const History = () => {
             </p>
           </div>
 
-          <div className="relative">
-            <select
+          <div className="relative z-20">
+            <NeoDropdown
+              options={statusOptions}
               value={filter}
-              onChange={(e) => setFilter(e.target.value)}
-              className="neo-input w-48 cursor-pointer font-bold uppercase tracking-wider dark:bg-alphonse-surface dark:text-alphonse-cream"
-            >
-              <option value="all">All Status</option>
-              <option value="completed">Completed</option>
-              <option value="processing">Processing</option>
-              <option value="pending">Pending</option>
-              <option value="failed">Failed</option>
-            </select>
+              onChange={setFilter}
+            />
           </div>
         </div>
 
@@ -127,7 +130,7 @@ const History = () => {
               </div>
             </div>
 
-            <div className="bg-alphonse-cream dark:bg-alphonse-surface border-2 border-black p-4 mb-6 shadow-neo">
+            <div className="bg-alphonse-cream dark:bg-alphonse-surface border-2 border-black p-4 mb-6 shadow-neo dark:shadow-neo-light">
               <div className="flex justify-between items-center mb-2">
                 <span className="font-bold text-gray-600 dark:text-gray-400">Subtotal</span>
                 <span className="font-mono font-bold text-alphonse-charcoal dark:text-alphonse-cream">

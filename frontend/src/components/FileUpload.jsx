@@ -107,7 +107,7 @@ const FileUpload = ({ onUploadSuccess }) => {
             <p className="text-xs text-gray-500 mt-4 font-mono uppercase">Max Size: 10MB</p>
           </label>
         ) : (
-          <div className="flex items-center justify-center space-x-4 bg-white dark:bg-alphonse-surface p-4 border-2 border-black shadow-neo">
+          <div className="flex items-center justify-center space-x-4 bg-white dark:bg-alphonse-surface p-4 border-2 border-black shadow-neo dark:shadow-neo-light">
             <File className="w-8 h-8 text-alphonse-blue" />
             <div className="flex-1 text-left">
               <p className="font-heading font-bold text-alphonse-charcoal dark:text-alphonse-cream">{selectedFile.name}</p>

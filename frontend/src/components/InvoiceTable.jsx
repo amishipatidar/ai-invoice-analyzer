@@ -3,14 +3,14 @@ import { Eye, Trash2, FileText } from 'lucide-react';
 const InvoiceTable = ({ invoices, onDelete, onView }) => {
   const getStatusBadge = (status) => {
     const styles = {
-      pending: 'bg-alphonse-yellow text-alphonse-charcoal border-2 border-black',
-      processing: 'bg-alphonse-blue text-white border-2 border-black',
-      completed: 'bg-green-500 text-white border-2 border-black',
-      failed: 'bg-alphonse-red text-white border-2 border-black',
+      pending: 'bg-alphonse-yellow text-alphonse-charcoal border-2 border-black dark:border-white',
+      processing: 'bg-alphonse-blue text-white border-2 border-black dark:border-white',
+      completed: 'bg-green-500 text-white border-2 border-black dark:border-white',
+      failed: 'bg-alphonse-red text-white border-2 border-black dark:border-white',
     };
 
     return (
-      <span className={`px-3 py-1 text-xs font-bold uppercase tracking-wider shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] ${styles[status]}`}>
+      <span className={`px-3 py-1 text-xs font-bold uppercase tracking-wider shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_#ffffff] ${styles[status]}`}>
         {status}
       </span>
     );
@@ -19,7 +19,7 @@ const InvoiceTable = ({ invoices, onDelete, onView }) => {
   if (invoices.length === 0) {
     return (
       <div className="neo-card py-16 flex flex-col items-center justify-center text-center bg-white dark:bg-alphonse-charcoal">
-        <div className="p-4 bg-gray-100 dark:bg-gray-800 border-2 border-black shadow-neo mb-4">
+        <div className="p-4 bg-gray-100 dark:bg-gray-800 border-2 border-black shadow-neo dark:shadow-neo-light mb-4">
           <FileText className="w-8 h-8 text-gray-400 dark:text-gray-500" />
         </div>
         <h3 className="text-xl font-heading font-bold text-alphonse-charcoal dark:text-alphonse-cream mb-1">No invoices yet</h3>
@@ -34,7 +34,7 @@ const InvoiceTable = ({ invoices, onDelete, onView }) => {
     <div className="neo-card overflow-x-auto bg-white dark:bg-alphonse-charcoal p-0">
       <table className="w-full">
         <thead>
-          <tr className="border-b-2 border-black bg-gray-100 dark:bg-gray-800">
+          <tr className="border-b-2 border-black dark:border-white bg-gray-100 dark:bg-gray-800">
             <th className="text-left py-4 px-6 font-heading font-bold uppercase tracking-wider text-sm text-alphonse-charcoal dark:text-alphonse-cream">File Name</th>
             <th className="text-left py-4 px-6 font-heading font-bold uppercase tracking-wider text-sm text-alphonse-charcoal dark:text-alphonse-cream">Type</th>
             <th className="text-left py-4 px-6 font-heading font-bold uppercase tracking-wider text-sm text-alphonse-charcoal dark:text-alphonse-cream">Status</th>
@@ -62,7 +62,7 @@ const InvoiceTable = ({ invoices, onDelete, onView }) => {
                   {invoice.processingStatus === 'completed' && (
                     <button
                       onClick={() => onView(invoice)}
-                      className="p-2 bg-alphonse-blue text-white border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-none transition-all active:bg-blue-700"
+                      className="p-2 bg-alphonse-blue text-white border-2 border-black dark:border-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_#ffffff] hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-none transition-all active:bg-blue-700"
                       title="View Details"
                     >
                       <Eye className="w-4 h-4" />
@@ -70,7 +70,7 @@ const InvoiceTable = ({ invoices, onDelete, onView }) => {
                   )}
                   <button
                     onClick={() => onDelete(invoice._id)}
-                    className="p-2 bg-alphonse-red text-white border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-none transition-all active:bg-red-700"
+                    className="p-2 bg-alphonse-red text-white border-2 border-black dark:border-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_#ffffff] hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-none transition-all active:bg-red-700"
                     title="Delete Invoice"
                   >
                     <Trash2 className="w-4 h-4" />

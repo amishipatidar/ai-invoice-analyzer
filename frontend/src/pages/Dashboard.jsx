@@ -14,6 +14,20 @@ import {
   Cell
 } from 'recharts';
 
+const CustomTooltip = ({ active, payload, label }) => {
+  if (active && payload && payload.length) {
+    return (
+      <div className="bg-white dark:bg-alphonse-surface border-2 border-black dark:border-white shadow-neo dark:shadow-neo-light p-3">
+        <p className="font-heading font-bold uppercase mb-1 text-alphonse-charcoal dark:text-alphonse-cream">{label}</p>
+        <p className="font-mono text-sm text-alphonse-blue dark:text-alphonse-yellow">
+          ${payload[0].value.toFixed(2)}
+        </p>
+      </div>
+    );
+  }
+  return null;
+};
+
 const Dashboard = () => {
   const [invoices, setInvoices] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -179,13 +193,7 @@ const Dashboard = () => {
                     />
                     <Tooltip
                       cursor={{ fill: 'transparent' }}
-                      contentStyle={{
-                        backgroundColor: '#282E31',
-                        border: '2px solid #000',
-                        boxShadow: '4px 4px 0px 0px rgba(0,0,0,1)',
-                        color: '#E5E1D4',
-                        fontFamily: 'Space Grotesk, sans-serif'
-                      }}
+                      content={<CustomTooltip />}
                     />
                     <Bar dataKey="amount" radius={[0, 0, 0, 0]}>
                       {chartData.map((entry, index) => (
@@ -274,7 +282,7 @@ const Dashboard = () => {
               </div>
             </div>
 
-            <div className="bg-alphonse-cream dark:bg-alphonse-surface border-2 border-black p-4 mb-6 shadow-neo">
+            <div className="bg-alphonse-cream dark:bg-alphonse-surface border-2 border-black p-4 mb-6 shadow-neo dark:shadow-neo-light">
               <div className="flex justify-between items-center mb-2">
                 <span className="font-bold text-gray-600 dark:text-gray-400">Subtotal</span>
                 <span className="font-mono font-bold text-alphonse-charcoal dark:text-alphonse-cream">

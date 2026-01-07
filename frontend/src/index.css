@@ -38,19 +38,23 @@
   }
 
   .neo-input {
-    @apply w-full border-2 border-gray-600 px-4 py-3 focus:outline-none transition-colors placeholder-gray-500;
-    background-color: theme('colors.alphonse.charcoal');
-    color: theme('colors.alphonse.cream');
+    @apply w-full border-2 border-black px-4 py-3 focus:outline-none transition-colors placeholder-gray-400;
+    background-color: white;
+    color: theme('colors.alphonse.charcoal');
   }
 
   .dark .neo-input {
+    background-color: theme('colors.alphonse.surface');
     border-color: #E5E1D4 !important;
     color: #E5E1D4 !important;
+    @apply placeholder-gray-500;
   }
 
   .neo-input:focus {
-    border-color: theme('colors.alphonse.yellow');
+    border-color: theme('colors.alphonse.blue');
+    @apply ring-0;
   }
+
 
   .neo-btn {
     font-family: theme('fontFamily.heading');

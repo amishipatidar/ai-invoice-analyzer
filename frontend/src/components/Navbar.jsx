@@ -14,11 +14,11 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-white dark:bg-alphonse-charcoal border-b-2 border-black sticky top-0 z-50 transition-colors duration-300">
+    <nav className="bg-white dark:bg-alphonse-charcoal border-b-2 border-black dark:border-white sticky top-0 z-50 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           <Link to="/" className="flex items-center space-x-3 group">
-            <div className="p-2 bg-alphonse-yellow border-2 border-black shadow-neo group-hover:translate-x-[2px] group-hover:translate-y-[2px] group-hover:shadow-none transition-all">
+            <div className="p-2 bg-alphonse-yellow border-2 border-black dark:border-white shadow-neo dark:shadow-neo-light group-hover:translate-x-[2px] group-hover:translate-y-[2px] group-hover:shadow-none transition-all">
               <FileText className="w-6 h-6 text-alphonse-charcoal" />
             </div>
             <span className="text-2xl font-heading font-bold text-alphonse-charcoal dark:text-alphonse-cream tracking-tight">
@@ -49,7 +49,7 @@ const Navbar = () => {
 
             <button
               onClick={toggleTheme}
-              className="p-2 border-2 border-transparent hover:border-black hover:bg-gray-100 dark:hover:bg-gray-800 transition-all rounded-none"
+              className="p-2 border-2 border-transparent hover:border-black dark:hover:border-white hover:bg-gray-100 dark:hover:bg-gray-800 transition-all rounded-none"
               aria-label="Toggle theme"
             >
               {isDark ? (

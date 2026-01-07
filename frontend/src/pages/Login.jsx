@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { LogIn, AlertCircle } from 'lucide-react';
@@ -8,8 +8,14 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const { login } = useAuth();
+  const { login, user } = useAuth();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (user) {
+      navigate('/dashboard');
+    }
+  }, [user, navigate]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -31,7 +37,7 @@ const Login = () => {
       <div className="neo-card w-full max-w-md relative overflow-hidden bg-white dark:bg-alphonse-charcoal">
 
         <div className="text-center mb-8 mt-4">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-alphonse-yellow border-2 border-black shadow-neo rounded-none mb-4">
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-alphonse-yellow border-2 border-black dark:border-white shadow-neo dark:shadow-neo-light rounded-none mb-4">
             <LogIn className="w-8 h-8 text-alphonse-charcoal" />
           </div>
           <h2 className="text-3xl text-alphonse-charcoal dark:text-alphonse-cream mb-2">Welcome Back</h2>
