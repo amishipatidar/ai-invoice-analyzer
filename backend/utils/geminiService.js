@@ -1,9 +1,6 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import fs from 'fs';
 
-// Hardcoding the NEW key provided by user
-const genAI = new GoogleGenerativeAI("AIzaSyAFbOYrRkCXOobVwvfZmvawMj_eP9fYYl4");
-
 // Helper to convert file to GenerativePart
 function fileToGenerativePart(path, mimeType) {
   return {
@@ -16,6 +13,13 @@ function fileToGenerativePart(path, mimeType) {
 
 export const processInvoiceWithGemini = async (filePath, mimeType, originalName = '') => {
   try {
+    // Initialize AI client INSIDE the function to ensure env vars are loaded
+    // (Top-level imports happen before dotenv.config() in ES modules)
+    if (!process.env.GEMINI_API_KEY) {
+      throw new Error("GEMINI_API_KEY is missing from environment variables");
+    }
+    const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+    
     // --- TEST FILE INTERCEPTOR ---
     // If the user is uploading one of the generated test files, return PERFECT mock data.
     // This ensures the demo works 100% of the time without AI hallucinations.
@@ -145,19 +149,7 @@ Return ONLY the JSON object, no other text.
 
   } catch (error) {
     console.error('Gemini processing error:', error);
-
-    // Return mock data ONLY if Gemini itself fails (network/key issues)
-    return {
-      invoiceNumber: 'EXTRACTED-FAIL',
-      invoiceDate: new Date().toISOString().split('T')[0],
-      vendorName: 'Extraction Failed',
-      customerName: 'Error',
-      items: [],
-      subtotal: 0,
-      tax: 0,
-      total: 0,
-      currency: 'USD',
-      notes: `Extraction error: ${error.message}`
-    };
+    // Rethrow the error so the controller handles it correctly (sets status to failed)
+    throw error;
   }
 };
