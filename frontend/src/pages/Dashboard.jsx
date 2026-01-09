@@ -248,7 +248,7 @@ const Dashboard = () => {
             className="neo-card bg-white dark:bg-alphonse-charcoal w-full max-w-2xl max-h-[85vh] overflow-y-auto relative"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex justify-between items-center mb-6 border-b-2 border-black pb-4">
+            <div className="flex justify-between items-center mb-6 border-b-2 border-black dark:border-white pb-4">
               <div>
                 <h3 className="text-2xl font-heading font-bold text-alphonse-charcoal dark:text-alphonse-cream">Invoice Details</h3>
                 <p className="text-sm text-gray-500 dark:text-gray-400 font-bold uppercase tracking-wider">
@@ -257,7 +257,7 @@ const Dashboard = () => {
               </div>
               <button
                 onClick={() => setSelectedInvoice(null)}
-                className="p-2 border-2 border-black hover:bg-alphonse-red hover:text-white transition-colors shadow-neo active:translate-x-[2px] active:translate-y-[2px] active:shadow-none"
+                className="p-2 border-2 border-black dark:border-white hover:bg-alphonse-red hover:text-white transition-colors shadow-neo dark:shadow-neo-light active:translate-x-[2px] active:translate-y-[2px] active:shadow-none"
               >
                 ✕
               </button>
@@ -282,7 +282,7 @@ const Dashboard = () => {
               </div>
             </div>
 
-            <div className="bg-alphonse-cream dark:bg-alphonse-surface border-2 border-black p-4 mb-6 shadow-neo dark:shadow-neo-light">
+            <div className="bg-alphonse-cream dark:bg-alphonse-surface border-2 border-black dark:border-white p-4 mb-6 shadow-neo dark:shadow-neo-light">
               <div className="flex justify-between items-center mb-2">
                 <span className="font-bold text-gray-600 dark:text-gray-400">Subtotal</span>
                 <span className="font-mono font-bold text-alphonse-charcoal dark:text-alphonse-cream">
@@ -309,9 +309,9 @@ const Dashboard = () => {
             {selectedInvoice.extractedData?.items?.length > 0 && (
               <div>
                 <h4 className="font-heading font-bold text-lg mb-3 text-alphonse-charcoal dark:text-alphonse-cream">Line Items</h4>
-                <div className="border-2 border-black overflow-hidden">
+                <div className="border-2 border-black dark:border-white overflow-hidden">
                   <table className="w-full text-sm">
-                    <thead className="bg-gray-100 dark:bg-gray-800 border-b-2 border-black">
+                    <thead className="bg-gray-100 dark:bg-gray-800 border-b-2 border-black dark:border-white">
                       <tr>
                         <th className="text-left p-3 font-bold text-gray-600 dark:text-gray-400 uppercase">Description</th>
                         <th className="text-right p-3 font-bold text-gray-600 dark:text-gray-400 uppercase">Qty</th>

@@ -23,7 +23,7 @@ export default {
       },
       boxShadow: {
         'neo': '4px 4px 0px 0px rgba(0,0,0,1)',
-        'neo-light': '4px 4px 0px 0px #E5E1D4', // Cream shadow for dark mode
+        'neo-light': '4px 4px 0px 0px #ffffff', // White shadow for dark mode
       }
     },
   },

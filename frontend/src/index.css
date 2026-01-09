@@ -33,8 +33,8 @@
 
   /* Robust Dark Mode Overrides with !important */
   .dark .neo-card {
-    border-color: #E5E1D4 !important;
-    box-shadow: 4px 4px 0px 0px #E5E1D4 !important;
+    border-color: #ffffff !important;
+    box-shadow: 4px 4px 0px 0px #ffffff !important;
   }
 
   .neo-input {
