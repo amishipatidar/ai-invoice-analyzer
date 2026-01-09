@@ -95,8 +95,8 @@ export const processInvoiceWithGemini = async (filePath, mimeType, originalName 
     }
     // --- END INTERCEPTOR ---
 
-    console.log("Using Gemini Model: gemini-2.0-flash-exp (Native PDF Support)");
-    const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash-exp" });
+    console.log("Using Gemini Model: gemini-2.5-flash-lite (Native PDF Support)");
+    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash-lite" });
 
     const prompt = `
 You are an AI assistant specialized in extracting structured data from invoice documents.
